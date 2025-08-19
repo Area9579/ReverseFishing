@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddg3ko24uvh38"]
+
+[ext_resource type="Script" uid="uid://qekehxqlhdb2" path="res://Boat/boat_controller.gd" id="1_o4dir"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbuyh"]
+size = Vector3(1, 0.238281, 2.68652)
+
+[sub_resource type="SphereMesh" id="SphereMesh_o4dir"]
+radius = 0.2
+height = 0.4
+
+[node name="BoatController" type="CharacterBody3D"]
+script = ExtResource("1_o4dir")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_hbuyh")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.752143, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head"]
+mesh = SubResource("SphereMesh_o4dir")
