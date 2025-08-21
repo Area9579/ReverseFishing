@@ -1,9 +1,14 @@
+class_name rowboat
 extends CharacterBody3D
 
 @export var baseBoatSpeed : float = 1
 
 @onready var head: Node3D = $Head
 @onready var camera_3d: Camera3D = $Head/Camera3D
+@onready var preserver_marker: Marker3D = $PreserverMarker
+
+var preserver : PackedScene = preload("res://Life Preserver/life_preserver.tscn")
+var preserverArray : Array[LifePreserver] = []
 
 var mouseSensitivity : int = 1
 
@@ -23,6 +28,8 @@ var timeElpased : float = 0.0
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	SignalBus.connect("addPreserver", createPreserver)
 
 
 func _process(delta: float) -> void:
@@ -38,6 +45,8 @@ func _process(delta: float) -> void:
 	else:
 		velocity = lerp(velocity, Vector3.ZERO, exp(-1000 * delta))
 	
+	if Input.is_action_just_pressed("Interact"):
+		SignalBus.emit_signal("interact")
 	
 	move_and_slide()
 
@@ -48,3 +57,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_3d.rotate_x(event.relative.y / 1000 * mouseSensitivity)
 		head.rotation_degrees.y = clamp(head.rotation_degrees.y, -120, 120)
 		camera_3d.rotation_degrees.x = clamp(camera_3d.rotation_degrees.x, -65, 65)
+
+
+func createPreserver():
+	var newPreserver = preserver.instantiate()
+	if preserverArray == []:
+		preserver_marker.add_child(newPreserver)
+	else:
+		preserverArray.get(preserverArray.size() - 1).getMarker().add_child(newPreserver)
+	
+	preserverArray.append(newPreserver)
