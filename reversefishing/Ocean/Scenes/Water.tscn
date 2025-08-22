@@ -27,9 +27,9 @@ as_normal_map = true
 noise = SubResource("FastNoiseLite_6k7e5")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_adlwk"]
-noise_type = 3
+noise_type = 0
 seed = 3
-fractal_type = 2
+fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3kibq"]
 seamless = true

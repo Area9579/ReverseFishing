@@ -62,7 +62,7 @@ environment = SubResource("Environment_eccmc")
 [node name="Water" parent="." instance=ExtResource("1_eccmc")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.371396, -0.322977, 0.870489, 0.0347672, 0.941727, 0.334575, -0.927823, -0.0939956, 0.360983, -16.7181, 1.02169, 5.41859)
+transform = Transform3D(0.596363, -0.288191, 0.749198, -0.0324331, 0.923917, 0.381216, -0.80206, -0.251642, 0.541643, -16.7181, 0.508538, 5.77784)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
 light_color = Color(0.696969, 0.552437, 0.375594, 1)
@@ -72,7 +72,7 @@ light_energy = 11.991
 mesh = SubResource("BoxMesh_72a0t")
 
 [node name="TestCube" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4233, 0.368091, 5.16628)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4233, 0.946484, 5.16628)
 script = ExtResource("3_up6sl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestCube"]

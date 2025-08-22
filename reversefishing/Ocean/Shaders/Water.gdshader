@@ -10,8 +10,6 @@ uniform sampler2D wave;
 uniform sampler2D texture_normal;
 uniform sampler2D texture_normal2;
 
-
-
 uniform vec2 wave_direction = vec2(2.0,0.0); // Direction of wave 1
 uniform vec2 wave_direction2 = vec2(0.0,1.0); // Direction of wave 2
 
