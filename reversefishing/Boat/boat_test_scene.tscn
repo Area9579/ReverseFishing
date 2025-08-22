@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpqpxqkaaubwo"]
+[gd_scene load_steps=6 format=3 uid="uid://cpqpxqkaaubwo"]
 
 [ext_resource type="PackedScene" uid="uid://ddg3ko24uvh38" path="res://Boat/boat_controller.tscn" id="1_37k0w"]
 [ext_resource type="PackedScene" uid="uid://cd771rb0jevf1" path="res://FishingVessel/fishing_vessel.tscn" id="1_ciogt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ciogt"]
+size = Vector3(30, 0.1, 30)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ciogt"]
 albedo_color = Color(0.000231497, 2.208e-05, 0.267802, 1)
@@ -13,15 +16,20 @@ size = Vector2(30, 30)
 [node name="BoatTestScene" type="Node3D"]
 
 [node name="BoatController" parent="." instance=ExtResource("1_37k0w")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_5f3ft")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.106734, 0)
 
 [node name="FishingVessel" parent="." instance=ExtResource("1_ciogt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.125426, 9)
 
 [node name="FishingVessel2" parent="." instance=ExtResource("1_ciogt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.125426, -5)
+
+[node name="RigidBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.12543, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_ciogt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("PlaneMesh_5f3ft")
+skeleton = NodePath("../..")
