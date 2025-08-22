@@ -6,7 +6,6 @@ extends RigidBody3D
 
 @onready var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var water: Water = $"../Water"
-#@onready var water: MeshInstance3D = %Water
 
 const water_height : float = 0.0
 

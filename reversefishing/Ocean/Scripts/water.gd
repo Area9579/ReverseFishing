@@ -16,6 +16,7 @@ func _ready() -> void:
 	noise_scale = material.get_shader_parameter("noise_scale")
 	height_scale = material.get_shader_parameter("height_scale")
 	time_scale = material.get_shader_parameter("time_scale")
+	
 
 func _process(delta: float) -> void:
 	set_new_time.call_deferred(delta)
@@ -32,4 +33,4 @@ func get_height(world_position : Vector3) -> float:
 	
 	var pixel_pos = Vector2(uv_x * noise.get_width(), uv_y * noise.get_height())
 	
-	return noise.get_pixelv(pixel_pos).r * height_scale
+	return global_position.y + noise.get_pixelv(pixel_pos).r * height_scale

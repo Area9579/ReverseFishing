@@ -22,7 +22,7 @@ sky = SubResource("Sky_up6sl")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.2289
+volumetric_fog_density = 0.1868
 volumetric_fog_albedo = Color(0.29269, 0.31741, 0.266917, 1)
 volumetric_fog_length = 32.0
 
@@ -60,10 +60,9 @@ omni_range = 18.5229
 environment = SubResource("Environment_eccmc")
 
 [node name="Water" parent="." instance=ExtResource("1_eccmc")]
-unique_name_in_owner = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.760179, -0.163718, 0.628748, -6.40195e-09, 0.967731, 0.251985, -0.649713, -0.191554, 0.735649, -16.7941, 0.477657, 5.637)
+transform = Transform3D(0.371396, -0.322977, 0.870489, 0.0347672, 0.941727, 0.334575, -0.927823, -0.0939956, 0.360983, -16.7181, 1.02169, 5.41859)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
 light_color = Color(0.696969, 0.552437, 0.375594, 1)
@@ -73,7 +72,7 @@ light_energy = 11.991
 mesh = SubResource("BoxMesh_72a0t")
 
 [node name="TestCube" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4233, 0.965367, 4.82779)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4233, 0.368091, 5.16628)
 script = ExtResource("3_up6sl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestCube"]
