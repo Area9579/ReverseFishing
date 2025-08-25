@@ -30,7 +30,7 @@ current = true
 mesh = SubResource("SphereMesh_o4dir")
 
 [node name="PreserverMarker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="RopeAttachPoint" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05455)

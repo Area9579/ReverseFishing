@@ -41,10 +41,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
 		
 		turnDirection = Input.get_axis("Left", "Right")
-		rotation_degrees.y = lerp(rotation_degrees.y,rotation_degrees.y + (-varBoatSpeed * 3 * turnDirection), exp(-500 * delta))
-		velocity = lerp(velocity, (forwardVector * (varBoatSpeed + baseBoatSpeed)), exp(-500 * delta))
+		rotation_degrees.y = lerp(rotation_degrees.y,rotation_degrees.y + (-varBoatSpeed * 3 * turnDirection), delta * 5)
+		velocity = lerp(velocity, (forwardVector * (varBoatSpeed + baseBoatSpeed)), delta)
 	else:
-		velocity = lerp(velocity, Vector3.ZERO, exp(-1000 * delta))
+		velocity = lerp(velocity, Vector3.ZERO, delta)
 	
 	if Input.is_action_just_pressed("Interact"):
 		SignalBus.emit_signal("interact")
