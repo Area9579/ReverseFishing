@@ -1,0 +1,2 @@
+class_name LifePreserver
+extends RigidBody3D

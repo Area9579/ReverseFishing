@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddg3ko24uvh38"]
+[gd_scene load_steps=5 format=3 uid="uid://ddg3ko24uvh38"]
 
 [ext_resource type="Script" uid="uid://qekehxqlhdb2" path="res://Boat/boat_controller.gd" id="1_o4dir"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbuyh"]
-size = Vector3(1, 0.238281, 2.68652)
+size = Vector3(1, 0.238, 2)
 
 [sub_resource type="SphereMesh" id="SphereMesh_o4dir"]
 radius = 0.2
 height = 0.4
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_o4dir"]
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="BoatController" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_o4dir")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -24,3 +28,14 @@ current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head"]
 mesh = SubResource("SphereMesh_o4dir")
+
+[node name="PreserverMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="RopeAttachPoint" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05455)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RopeAttachPoint"]
+shape = SubResource("BoxShape3D_o4dir")

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd771rb0jevf1"]
+
+[ext_resource type="Script" uid="uid://bfkgktv376x3y" path="res://FishingVessel/fishing_vessel.gd" id="1_el70e"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6x6mc"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 5.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_el70e"]
+points = PackedVector3Array(0.934116, 2.31799, 0.354094, -0.953904, -2.32762, -0.29869, -0.958429, -2.33876, 0.284208, 0.952334, -2.36282, -0.303086, -0.29869, 2.32762, -0.953904, -0.868366, 2.2941, 0.494011, 0.354094, -2.31799, 0.934116, 0.284208, -2.33876, -0.958429, 0.857215, 2.3067, -0.512639, -0.303086, 2.36282, 0.952334, -0.953904, 2.32762, -0.29869, -0.512639, -2.3067, 0.857215, -0.588755, -2.32339, -0.806886, 0.500874, 2.32547, 0.864257, 0.864257, -2.32547, 0.500874, 0.284208, 2.33876, -0.958429, -0.806886, 2.32339, -0.588755, 0.494011, -2.2941, -0.868366, -0.303086, -2.36282, 0.952334, 0.952334, 2.36282, -0.303086, -0.29869, -2.32762, -0.953904, -0.958429, 2.33876, 0.284208, 0.7071, -2.28736, 0.7071, 0.7071, 2.28736, 0.7071, 0.354094, 2.31799, 0.934116, 0.934116, -2.31799, 0.354094, 0.857215, -2.3067, -0.512639, -0.512639, 2.3067, 0.857215, -0.868366, -2.2941, 0.494011, 0.494011, 2.2941, -0.868366, -0.806886, -2.32339, -0.588755, -0.588755, 2.32339, -0.806886)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_el70e"]
+radius = 5.0
+
+[node name="FishingVessel" type="StaticBody3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_el70e")
+sinkTime = 10
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_6x6mc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_el70e")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_el70e")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
