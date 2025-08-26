@@ -1,9 +1,34 @@
-[gd_scene load_steps=11 format=3 uid="uid://dl1mrn8rc5ucd"]
+[gd_scene load_steps=13 format=3 uid="uid://dl1mrn8rc5ucd"]
 
+[ext_resource type="Shader" uid="uid://eaa67ug0rvaw" path="res://Ocean/Shaders/placeholderWater.gdshader" id="1_6k7e5"]
 [ext_resource type="Shader" uid="uid://cmu13it8rh12m" path="res://Ocean/Shaders/Water.gdshader" id="1_i8ojr"]
 [ext_resource type="Script" uid="uid://chnur6g6gv6q" path="res://Ocean/Scripts/water.gd" id="2_kh85g"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmhqy"]
+render_priority = 0
+shader = ExtResource("1_6k7e5")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/fresnel_albedo = Color(0, 0, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.02
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_direction2 = Vector2(0, 1)
+shader_parameter/time_scale = 0.025
+shader_parameter/wave_speed = 2.0
+shader_parameter/noise_scale = 10.0
+shader_parameter/height_scale = 0.15
+shader_parameter/color_deep = Color(0, 0, 0, 1)
+shader_parameter/color_shallow = Color(0, 0, 0, 1)
+shader_parameter/beers_law = 0.8
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.1
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/wave_time = 0.0
+
 [sub_resource type="QuadMesh" id="QuadMesh_kh85g"]
+material = SubResource("ShaderMaterial_jmhqy")
 size = Vector2(100, 100)
 subdivide_depth = 1000
 orientation = 1
@@ -27,9 +52,9 @@ as_normal_map = true
 noise = SubResource("FastNoiseLite_6k7e5")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_adlwk"]
-noise_type = 0
-seed = 3
 fractal_type = 0
+domain_warp_fractal_type = 0
+domain_warp_fractal_octaves = 10
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3kibq"]
 seamless = true
@@ -39,26 +64,27 @@ noise = SubResource("FastNoiseLite_adlwk")
 render_priority = 0
 shader = ExtResource("1_i8ojr")
 shader_parameter/albedo = Color(0.0458766, 0.067137, 0.0482185, 1)
-shader_parameter/fresnel_albedo = Color(0, 0, 0, 1)
-shader_parameter/metallic = 0.323
-shader_parameter/roughness = 0.02
-shader_parameter/wave = SubResource("NoiseTexture2D_3kibq")
-shader_parameter/texture_normal = SubResource("NoiseTexture2D_kh85g")
-shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_jmhqy")
-shader_parameter/wave_direction = Vector2(2, 0)
-shader_parameter/wave_direction2 = Vector2(0, 1)
-shader_parameter/time_scale = 0.01
-shader_parameter/noise_scale = 10.0
-shader_parameter/height_scale = 0.5
+shader_parameter/albedo2 = Color(0, 0, 0, 1)
 shader_parameter/color_deep = Color(0, 0, 0, 1)
 shader_parameter/color_shallow = Color(0.0863642, 0.140784, 0.146558, 1)
+shader_parameter/metallic = 0.323
+shader_parameter/roughness = 0.02
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_kh85g")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_jmhqy")
+shader_parameter/wave = SubResource("NoiseTexture2D_3kibq")
+shader_parameter/wave_time = 0.0
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_2_direction = Vector2(0, 1)
+shader_parameter/time_scale = 0.01
+shader_parameter/wave_speed = 0.03
+shader_parameter/noise_scale = 10.0
+shader_parameter/height_scale = 0.5
 shader_parameter/beers_law = 1.8
 shader_parameter/depth_offset = -0.75
 shader_parameter/edge_scale = 0.1
 shader_parameter/near = 1.0
 shader_parameter/far = 100.0
 shader_parameter/edge_color = Color(1, 1, 1, 1)
-shader_parameter/wave_time = 0.0
 
 [node name="Water" type="MeshInstance3D"]
 mesh = SubResource("QuadMesh_kh85g")
