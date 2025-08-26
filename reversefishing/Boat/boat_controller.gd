@@ -48,3 +48,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_3d.rotate_x(event.relative.y / 1000 * mouseSensitivity)
 		head.rotation_degrees.y = clamp(head.rotation_degrees.y, -120, 120)
 		camera_3d.rotation_degrees.x = clamp(camera_3d.rotation_degrees.x, -65, 65)
+
+
+func createPreserver():
+	var newPreserver = preserver.instantiate()
+	if preserverArray == []:
+		preserver_marker.add_child(newPreserver)
+		newPreserver.setRopeAttachment(rope_attach_point)
+		newPreserver.top_level = true
+	else:
+		get_tree().current_scene.add_child(newPreserver)
+		newPreserver.reparent(preserverArray.get(preserverArray.size() - 1).getMarker(), false)
+		newPreserver.setRopeAttachment(preserverArray.get(preserverArray.size() - 1).getLifePreserver())
+		newPreserver.top_level = true
+	
+	preserverArray.append(newPreserver)
