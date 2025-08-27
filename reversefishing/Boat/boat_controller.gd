@@ -32,6 +32,7 @@ func _ready() -> void:
 	
 	SignalBus.connect("addPreserver", createPreserver)
 	SignalBus.connect("eatThatGuy", getEatedIdiot)
+	SignalBus.connect("callEatToHappen", uhhEatCall)
 
 
 func _process(delta: float) -> void:
@@ -56,9 +57,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Escape"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		
-		#temp
-		if !preserverArray.is_empty():
-			SignalBus.emit_signal("spawnMonster", preserverArray.get(preserverArray.size() - 1).getLifePreserver())
+	
+	if !is_on_floor():
+		velocity.y = -9.8
 	
 	
 	move_and_slide()
@@ -96,3 +97,8 @@ func getEatedIdiot():
 	if !preserverArray.is_empty():
 		preserverArray.get(preserverArray.size() - 1).queue_free()
 		preserverArray.pop_back()
+
+
+func uhhEatCall():
+	if !preserverArray.is_empty():
+			SignalBus.emit_signal("spawnMonster", preserverArray.get(preserverArray.size() - 1).getLifePreserver())
