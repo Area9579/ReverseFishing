@@ -6,9 +6,10 @@ extends CharacterBody3D
 @onready var head: Node3D = $Head
 @onready var camera_3d: Camera3D = $Head/Camera3D
 @onready var preserver_marker: Marker3D = $PreserverMarker
+@onready var rope_attach_point: StaticBody3D = $RopeAttachPoint
 
-var preserver : PackedScene = preload("res://Life Preserver/life_preserver.tscn")
-var preserverArray : Array[LifePreserver] = []
+var preserver : PackedScene = preload("res://Rope/rope.tscn")
+var preserverArray : Array[Node3D] = []
 
 var mouseSensitivity : int = 1
 
@@ -40,13 +41,18 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
 		
 		turnDirection = Input.get_axis("Left", "Right")
-		rotation_degrees.y = lerp(rotation_degrees.y,rotation_degrees.y + (-varBoatSpeed * 3 * turnDirection), exp(-500 * delta))
-		velocity = lerp(velocity, (forwardVector * (varBoatSpeed + baseBoatSpeed)), exp(-500 * delta))
+		rotation_degrees.y = lerp(rotation_degrees.y,rotation_degrees.y + (-varBoatSpeed * 3 * turnDirection), delta * 5)
+		velocity = lerp(velocity, (forwardVector * (varBoatSpeed + baseBoatSpeed)), delta)
 	else:
-		velocity = lerp(velocity, Vector3.ZERO, exp(-1000 * delta))
+		velocity = lerp(velocity, Vector3.ZERO, delta)
 	
 	if Input.is_action_just_pressed("Interact"):
 		SignalBus.emit_signal("interact")
+	
+	
+	if Input.is_action_just_pressed("Escape"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 	
 	move_and_slide()
 
@@ -63,7 +69,13 @@ func createPreserver():
 	var newPreserver = preserver.instantiate()
 	if preserverArray == []:
 		preserver_marker.add_child(newPreserver)
+		newPreserver.setRopeAttachment(rope_attach_point)
+		newPreserver.top_level = true
 	else:
-		preserverArray.get(preserverArray.size() - 1).getMarker().add_child(newPreserver)
+		get_tree().current_scene.add_child(newPreserver)
+		newPreserver.reparent(preserverArray.get(preserverArray.size() - 1).getMarker(), false)
+		#preserverArray.get(preserverArray.size() - 1).getMarker().add_child(newPreserver)
+		newPreserver.setRopeAttachment(preserverArray.get(preserverArray.size() - 1).getLifePreserver())
+		newPreserver.top_level = true
 	
 	preserverArray.append(newPreserver)
