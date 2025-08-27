@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddg3ko24uvh38"]
+[gd_scene load_steps=8 format=3 uid="uid://ddg3ko24uvh38"]
 
 [ext_resource type="Script" uid="uid://qekehxqlhdb2" path="res://Boat/boat_controller.gd" id="1_o4dir"]
+[ext_resource type="PackedScene" uid="uid://1753towy07lm" path="res://Boat/Assets/Rowboat.glb" id="2_hchyh"]
+[ext_resource type="PackedScene" uid="uid://crmblfalu6e7k" path="res://Boat/Assets/Paddle.glb" id="3_yfaip"]
+[ext_resource type="PackedScene" uid="uid://cc8yqxsdshdgo" path="res://Map/map.tscn" id="4_yfaip"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbuyh"]
-size = Vector3(1, 0.238, 2)
+size = Vector3(1, 0.238, 2.3)
 
 [sub_resource type="SphereMesh" id="SphereMesh_o4dir"]
 radius = 0.2
@@ -14,9 +17,11 @@ size = Vector3(0.1, 0.1, 0.1)
 
 [node name="BoatController" type="CharacterBody3D"]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_o4dir")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15)
 shape = SubResource("BoxShape3D_hbuyh")
 
 [node name="Head" type="Node3D" parent="."]
@@ -39,3 +44,18 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RopeAttachPoint"]
 shape = SubResource("BoxShape3D_o4dir")
+
+[node name="Meshes" type="Node3D" parent="."]
+transform = Transform3D(-0.315, 0, 2.75382e-08, 0, 0.315, 0, -2.75382e-08, 0, -0.315, 0, 0, 0)
+
+[node name="Rowboat" parent="Meshes" instance=ExtResource("2_hchyh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Paddle" parent="Meshes" instance=ExtResource("3_yfaip")]
+transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, 4, -1, 2)
+
+[node name="Paddle2" parent="Meshes" instance=ExtResource("3_yfaip")]
+transform = Transform3D(-0.5, 0.866025, 1.50996e-07, 0.866025, 0.5, 0, -7.54979e-08, 1.30766e-07, -1, -4, -1, -2)
+
+[node name="Map" parent="." instance=ExtResource("4_yfaip")]
+visible = false

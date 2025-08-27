@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc8yqxsdshdgo"]
+
+[ext_resource type="Script" uid="uid://bmgy5lmcwh5u6" path="res://Map/map.gd" id="1_ro55w"]
+[ext_resource type="FontFile" uid="uid://c7306jxkq0bhn" path="res://Font/BadPixelFont2.ttf" id="2_njngi"]
+
+[node name="Map" type="CanvasLayer"]
+script = ExtResource("1_ro55w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+offset_left = 256.0
+offset_right = 896.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="PlayerCoords" type="Label" parent="."]
+z_index = 1
+texture_filter = 1
+offset_left = 256.0
+offset_right = 896.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("2_njngi")
+theme_override_font_sizes/font_size = 64
+text = "pos x = 
+pos y = "

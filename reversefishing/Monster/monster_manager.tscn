@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmrrklprc7lie"]
+
+[ext_resource type="Script" uid="uid://ui1hwamoyoqx" path="res://Monster/monster_manager.gd" id="1_ot2t5"]
+
+[node name="MonsterManager" type="Node3D"]
+script = ExtResource("1_ot2t5")

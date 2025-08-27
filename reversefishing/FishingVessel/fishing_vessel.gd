@@ -1,5 +1,5 @@
 class_name Interactable
-extends StaticBody3D
+extends RigidBody3D
 
 @export_range(0.0, 60.0, 1.0) var sinkTime : int
 
@@ -17,7 +17,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	
 	boatInRange = true
 	sinkingTween = get_tree().create_tween()
-	sinkingTween.tween_property(self, "position", Vector3(position.x, -2, position.z), sinkTime)
+	sinkingTween.tween_property(self, "position", Vector3(position.x, -5, position.z), sinkTime)
 	
 	await sinkingTween.finished
 	queue_free()

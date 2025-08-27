@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpqpxqkaaubwo"]
+[gd_scene load_steps=7 format=3 uid="uid://cpqpxqkaaubwo"]
 
+[ext_resource type="PackedScene" uid="uid://dmrrklprc7lie" path="res://Monster/monster_manager.tscn" id="1_5f3ft"]
 [ext_resource type="PackedScene" uid="uid://ddg3ko24uvh38" path="res://Boat/boat_controller.tscn" id="1_37k0w"]
 [ext_resource type="PackedScene" uid="uid://cd771rb0jevf1" path="res://FishingVessel/fishing_vessel.tscn" id="1_ciogt"]
 
@@ -15,17 +16,18 @@ size = Vector2(30, 30)
 
 [node name="BoatTestScene" type="Node3D"]
 
+[node name="MonsterManager" parent="." instance=ExtResource("1_5f3ft")]
+
 [node name="BoatController" parent="." instance=ExtResource("1_37k0w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.106734, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.212371, 0)
 
 [node name="FishingVessel" parent="." instance=ExtResource("1_ciogt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.125426, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.879688, 9)
 
 [node name="FishingVessel2" parent="." instance=ExtResource("1_ciogt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.125426, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.879688, -5)
 
 [node name="RigidBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.12543, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_ciogt")

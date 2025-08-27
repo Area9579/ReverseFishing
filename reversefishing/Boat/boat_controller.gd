@@ -31,6 +31,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	SignalBus.connect("addPreserver", createPreserver)
+	SignalBus.connect("eatThatGuy", getEatedIdiot)
 
 
 func _process(delta: float) -> void:
@@ -38,11 +39,13 @@ func _process(delta: float) -> void:
 	timeElpased += delta
 	varBoatSpeed = amplitude * sin(frequency * timeElpased) + sinOffset
 	
-	if Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
-		
-		turnDirection = Input.get_axis("Left", "Right")
-		rotation_degrees.y = lerp(rotation_degrees.y,rotation_degrees.y + (-varBoatSpeed * 3 * turnDirection), delta * 5)
+	if Input.is_action_pressed("Left") and Input.is_action_pressed("Right"):
 		velocity = lerp(velocity, (forwardVector * (varBoatSpeed + baseBoatSpeed)), delta)
+		
+	elif Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
+		turnDirection = Input.get_axis("Left", "Right")
+		rotation_degrees.y = lerp(rotation_degrees.y,rotation_degrees.y + (-varBoatSpeed * 3 * turnDirection), delta * 8)
+		velocity = lerp(velocity, (forwardVector * ((varBoatSpeed + baseBoatSpeed) / 3)), delta)
 	else:
 		velocity = lerp(velocity, Vector3.ZERO, delta)
 	
@@ -52,9 +55,14 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Escape"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
+		#temp
+		if !preserverArray.is_empty():
+			SignalBus.emit_signal("spawnMonster", preserverArray.get(preserverArray.size() - 1).getLifePreserver())
 	
 	
 	move_and_slide()
+	sendCurrentCoordinates()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -74,8 +82,17 @@ func createPreserver():
 	else:
 		get_tree().current_scene.add_child(newPreserver)
 		newPreserver.reparent(preserverArray.get(preserverArray.size() - 1).getMarker(), false)
-		#preserverArray.get(preserverArray.size() - 1).getMarker().add_child(newPreserver)
 		newPreserver.setRopeAttachment(preserverArray.get(preserverArray.size() - 1).getLifePreserver())
 		newPreserver.top_level = true
 	
 	preserverArray.append(newPreserver)
+
+
+func sendCurrentCoordinates():
+	SignalBus.emit_signal("sendRowboatCoordinate", Vector2(global_position.x, global_position.z,))
+
+
+func getEatedIdiot():
+	if !preserverArray.is_empty():
+		preserverArray.get(preserverArray.size() - 1).queue_free()
+		preserverArray.pop_back()
