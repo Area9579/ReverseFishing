@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://d0pvlrlrg3qy7"]
 
 [ext_resource type="Shader" uid="uid://drjf4atexj18n" path="res://Ocean/Ocean.gdshader" id="1_nf65b"]
-[ext_resource type="PackedScene" uid="uid://dn61qtfjg1dl8" path="res://Ocean/Imported/water.tscn" id="1_up6sl"]
+[ext_resource type="PackedScene" uid="uid://dn61qtfjg1dl8" path="res://Ocean/Scenes/water.tscn" id="1_up6sl"]
 [ext_resource type="Script" uid="uid://bba1p5ui2mfhl" path="res://Ocean/ocean.gd" id="2_eccmc"]
 [ext_resource type="Script" uid="uid://1783t6iddxs2" path="res://Ocean/Scripts/test_cube.gd" id="3_up6sl"]
 
@@ -70,7 +70,6 @@ light_color = Color(0.696969, 0.552437, 0.375594, 1)
 light_energy = 11.991
 
 [node name="Pillar" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("BoxMesh_72a0t")
 
 [node name="TestCube" type="RigidBody3D" parent="."]

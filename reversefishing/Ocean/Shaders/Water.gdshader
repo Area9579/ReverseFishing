@@ -50,6 +50,8 @@ void vertex() {
 }
 
 void fragment() {
+	
+	
 	// Depth variables and calc
 	float depth_texture = texture(DEPTH_TEXTURE, SCREEN_UV).r;// * 2.0 - 1.0;
 	float depth = PROJECTION_MATRIX[3][2] / (depth_texture + PROJECTION_MATRIX[2][2]);
@@ -76,7 +78,7 @@ void fragment() {
 	vec3 surface_color = mix(albedo, albedo2, fresnel);
 	vec3 depth_color_adj = mix(edge_color, color, step(edge_scale, z_dif));
 
-	ALBEDO = clamp(surface_color ,vec3(0),vec3(1.0));
+	ALBEDO = mix(surface_color, color, 0.75);//clamp(surface_color ,vec3(0),vec3(1.0));
 	ALPHA = 1.0;
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
