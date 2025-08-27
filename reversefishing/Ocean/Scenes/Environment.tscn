@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0pvlrlrg3qy7"]
+[gd_scene load_steps=9 format=3 uid="uid://d0pvlrlrg3qy7"]
 
-[ext_resource type="Shader" uid="uid://drjf4atexj18n" path="res://Ocean/Ocean.gdshader" id="1_nf65b"]
-[ext_resource type="PackedScene" uid="uid://dn61qtfjg1dl8" path="res://Ocean/Scenes/water.tscn" id="1_up6sl"]
-[ext_resource type="Script" uid="uid://bba1p5ui2mfhl" path="res://Ocean/ocean.gd" id="2_eccmc"]
-[ext_resource type="Script" uid="uid://1783t6iddxs2" path="res://Ocean/Scripts/test_cube.gd" id="3_up6sl"]
+[ext_resource type="PackedScene" uid="uid://dn61qtfjg1dl8" path="res://Ocean/Scenes/water.tscn" id="1_sbjri"]
+[ext_resource type="Script" uid="uid://1783t6iddxs2" path="res://Ocean/Scripts/test_cube.gd" id="2_rnjrr"]
+[ext_resource type="PackedScene" uid="uid://ciifxnij2rh46" path="res://Ocean/Scenes/buoyant_object.tscn" id="3_moaat"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eccmc"]
 sky_top_color = Color(0.593735, 0.653345, 0.643066, 1)
@@ -26,27 +25,11 @@ volumetric_fog_density = 0.1868
 volumetric_fog_albedo = Color(0.29269, 0.31741, 0.266917, 1)
 volumetric_fog_length = 32.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_72a0t"]
-size = Vector3(4, 50, 4)
-
 [sub_resource type="BoxMesh" id="BoxMesh_npro8"]
 size = Vector3(0.2, 0.2, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8q1e2"]
 size = Vector3(0.202423, 0.210144, 0.222793)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_72a0t"]
-size = Vector2(100, 100)
-subdivide_width = 50
-subdivide_depth = 50
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_npro8"]
-render_priority = 0
-shader = ExtResource("1_nf65b")
-shader_parameter/out_color = Color(0.100999, 0.203027, 0.243394, 1)
-shader_parameter/amount = 0.435
-shader_parameter/beer_factor = 0.2
-shader_parameter/wave_time = 0.0
 
 [node name="Environment" type="Node3D"]
 
@@ -59,22 +42,20 @@ omni_range = 18.5229
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_eccmc")
 
-[node name="Water2" parent="." instance=ExtResource("1_up6sl")]
+[node name="Water" parent="." instance=ExtResource("1_sbjri")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19014, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.949808, 0.312832, 0, -0.312832, 0.949808, 0.0855231, 0.518756, 0.706956)
+transform = Transform3D(1, 0, 0, 0, 0.820352, 0.571859, 0, -0.571859, 0.820352, 0.0855231, 1.46451, 0.706956)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
 light_color = Color(0.696969, 0.552437, 0.375594, 1)
 light_energy = 11.991
 
-[node name="Pillar" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_72a0t")
-
 [node name="TestCube" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.303525, 0)
-script = ExtResource("3_up6sl")
+script = ExtResource("2_rnjrr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestCube"]
 mesh = SubResource("BoxMesh_npro8")
@@ -83,11 +64,5 @@ mesh = SubResource("BoxMesh_npro8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00050354, -0.00491315, 0.00298357)
 shape = SubResource("BoxShape3D_8q1e2")
 
-[node name="Old" type="Node3D" parent="."]
-visible = false
-
-[node name="Ocean" type="MeshInstance3D" parent="Old"]
-mesh = SubResource("PlaneMesh_72a0t")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_npro8")
-script = ExtResource("2_eccmc")
+[node name="BuoyantObject" parent="." instance=ExtResource("3_moaat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.416138, 0.559731, -1.49267)

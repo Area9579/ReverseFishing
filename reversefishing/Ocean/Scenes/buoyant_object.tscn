@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciifxnij2rh46"]
+
+[ext_resource type="Script" uid="uid://bdt3wyf48o0o6" path="res://Ocean/Scripts/buoyant_object.gd" id="1_64c6w"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_64c6w"]
+height = 0.444336
+radius = 0.829102
+
+[sub_resource type="TorusMesh" id="TorusMesh_wtwv7"]
+
+[node name="BuoyantObject" type="RigidBody3D"]
+script = ExtResource("1_64c6w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999986, 0, 0, 0, 0.999986, 0, 0, 0)
+shape = SubResource("CylinderShape3D_64c6w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("TorusMesh_wtwv7")
+
+[node name="Probes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0792224, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Probes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.964404)
+
+[node name="Marker3D2" type="Marker3D" parent="Probes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.877327, 0, -0.304176)
+
+[node name="Marker3D3" type="Marker3D" parent="Probes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.877, 0, -0.304)
