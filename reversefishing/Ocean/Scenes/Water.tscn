@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://dn61qtfjg1dl8"]
+
+[ext_resource type="Shader" uid="uid://cmu13it8rh12m" path="res://Ocean/Shaders/Water.gdshader" id="1_enij7"]
+[ext_resource type="Script" uid="uid://3jfs38w8qv5n" path="res://Ocean/Scripts/water.gd" id="2_fv2ed"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fv2ed"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5mmql"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_fv2ed")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1s5ju"]
+noise_type = 0
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_et73n"]
+seamless = true
+noise = SubResource("FastNoiseLite_1s5ju")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bj4y0"]
+render_priority = 0
+shader = ExtResource("1_enij7")
+shader_parameter/albedo = Color(0.132254, 0.135764, 0.0605791, 1)
+shader_parameter/albedo2 = Color(0.294923, 0.178796, 0.061586, 1)
+shader_parameter/color_deep = Color(0.133333, 0.137255, 0.0588235, 1)
+shader_parameter/color_shallow = Color(0.692848, 0.539949, 0.313585, 1)
+shader_parameter/metallic = 0.323
+shader_parameter/roughness = 0.02
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_5mmql")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_5mmql")
+shader_parameter/wave = SubResource("NoiseTexture2D_et73n")
+shader_parameter/wave_time = 0.0
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_2_direction = Vector2(0, 1)
+shader_parameter/time_scale = 0.01
+shader_parameter/wave_speed = 0.03
+shader_parameter/noise_scale = 10.0
+shader_parameter/height_scale = 0.5
+shader_parameter/beers_law = 3.02
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.1
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0xwda"]
+material = SubResource("ShaderMaterial_bj4y0")
+size = Vector2(500, 500)
+subdivide_width = 500
+subdivide_depth = 500
+
+[node name="Water" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_0xwda")
+script = ExtResource("2_fv2ed")
