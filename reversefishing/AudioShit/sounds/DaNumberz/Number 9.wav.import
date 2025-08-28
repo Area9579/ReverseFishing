@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bnhrdi5nwp5ig"
+path="res://.godot/imported/Number 9.wav-d30437ef4c6f6961e04250ebe6816875.sample"
+
+[deps]
+
+source_file="res://AudioShit/sounds/DaNumberz/Number 9.wav"
+dest_files=["res://.godot/imported/Number 9.wav-d30437ef4c6f6961e04250ebe6816875.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

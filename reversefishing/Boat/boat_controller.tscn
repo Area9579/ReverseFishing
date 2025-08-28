@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddg3ko24uvh38"]
+[gd_scene load_steps=9 format=3 uid="uid://ddg3ko24uvh38"]
 
 [ext_resource type="Script" uid="uid://qekehxqlhdb2" path="res://Boat/boat_controller.gd" id="1_o4dir"]
 [ext_resource type="PackedScene" uid="uid://1753towy07lm" path="res://Boat/Assets/Rowboat.glb" id="2_hchyh"]
 [ext_resource type="PackedScene" uid="uid://crmblfalu6e7k" path="res://Boat/Assets/Paddle.glb" id="3_yfaip"]
 [ext_resource type="PackedScene" uid="uid://cc8yqxsdshdgo" path="res://Map/map.tscn" id="4_yfaip"]
+[ext_resource type="PackedScene" uid="uid://dprj1wma0n6uu" path="res://Radio/radio.tscn" id="5_o8fyl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbuyh"]
 size = Vector3(1, 0.238, 2.3)
@@ -59,3 +60,6 @@ transform = Transform3D(-0.5, 0.866025, 1.50996e-07, 0.866025, 0.5, 0, -7.54979e
 
 [node name="Map" parent="." instance=ExtResource("4_yfaip")]
 visible = false
+
+[node name="Radio" parent="." instance=ExtResource("5_o8fyl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.835614)

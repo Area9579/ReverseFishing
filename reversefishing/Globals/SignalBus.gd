@@ -10,3 +10,7 @@ extends Node
 @warning_ignore("unused_signal") signal eatThatGuy
 @warning_ignore("unused_signal") signal spawnMonster(preserver : LifePreserver)
 @warning_ignore("unused_signal") signal callEatToHappen
+
+## Radio ##
+@warning_ignore("unused_signal") signal emitBoatCoordinate(coordinate : Vector2)
+@warning_ignore("unused_signal") signal popBoatCoord(coordinate : Vector2i)

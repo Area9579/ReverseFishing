@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpqpxqkaaubwo"]
+[gd_scene load_steps=10 format=3 uid="uid://cpqpxqkaaubwo"]
 
 [ext_resource type="PackedScene" uid="uid://dmrrklprc7lie" path="res://Monster/monster_manager.tscn" id="1_5f3ft"]
 [ext_resource type="PackedScene" uid="uid://ddg3ko24uvh38" path="res://Boat/boat_controller.tscn" id="1_37k0w"]
 [ext_resource type="PackedScene" uid="uid://cd771rb0jevf1" path="res://FishingVessel/fishing_vessel.tscn" id="1_ciogt"]
 [ext_resource type="PackedScene" uid="uid://c0vltoyicvp6p" path="res://Trap Boat/trap_boat.tscn" id="4_dhe2a"]
+[ext_resource type="PackedScene" uid="uid://buxa0dwc4tmwh" path="res://AudioShit/audio_shitter.tscn" id="5_64elb"]
+[ext_resource type="PackedScene" uid="uid://djgnljgswcq2n" path="res://DitherShader/Dithering Shader.tscn" id="6_585jc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ciogt"]
 size = Vector3(30, 0.1, 30)
@@ -39,3 +41,7 @@ skeleton = NodePath("../..")
 
 [node name="TrapVessel" parent="." instance=ExtResource("4_dhe2a")]
 transform = Transform3D(-0.296291, 0, -0.955098, 0, 1, 0, 0.955098, 0, -0.296291, 8.87917, 0.879688, -5)
+
+[node name="AudioShitter" parent="." instance=ExtResource("5_64elb")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_585jc")]

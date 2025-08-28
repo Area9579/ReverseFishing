@@ -1,0 +1,76 @@
+[gd_scene load_steps=15 format=3 uid="uid://dprj1wma0n6uu"]
+
+[ext_resource type="Script" uid="uid://dctdl0yb37k7o" path="res://Radio/radio.gd" id="1_m5b23"]
+[ext_resource type="AudioStream" uid="uid://bp7pdyow8wng" path="res://AudioShit/sounds/DaNumberz/Number 0.wav" id="2_cdgo1"]
+[ext_resource type="AudioStream" uid="uid://bhwsejnhj1kua" path="res://AudioShit/sounds/DaNumberz/Number 1.wav" id="2_eqk4p"]
+[ext_resource type="AudioStream" uid="uid://dqtrcka1i6m7o" path="res://AudioShit/sounds/DaNumberz/Number 2.wav" id="3_nol55"]
+[ext_resource type="AudioStream" uid="uid://bqvb5qakdobqn" path="res://AudioShit/sounds/DaNumberz/Number 3.wav" id="4_kik8q"]
+[ext_resource type="AudioStream" uid="uid://0s38tmj5k8nn" path="res://AudioShit/sounds/DaNumberz/Number 4.wav" id="5_cdgo1"]
+[ext_resource type="AudioStream" uid="uid://dcwtbxxykf5jr" path="res://AudioShit/sounds/DaNumberz/Number 6.wav" id="6_jggkw"]
+[ext_resource type="AudioStream" uid="uid://e5wophbwf6ys" path="res://AudioShit/sounds/DaNumberz/Number 5.wav" id="6_nol55"]
+[ext_resource type="AudioStream" uid="uid://c7pooo73mjju6" path="res://AudioShit/sounds/DaNumberz/Number 7.wav" id="7_xoxs0"]
+[ext_resource type="AudioStream" uid="uid://ugohtxecg833" path="res://AudioShit/sounds/DaNumberz/Number 8.wav" id="8_h3nkw"]
+[ext_resource type="AudioStream" uid="uid://bnhrdi5nwp5ig" path="res://AudioShit/sounds/DaNumberz/Number 9.wav" id="9_5n2tg"]
+[ext_resource type="AudioStream" uid="uid://dvb7b5d4jq0e7" path="res://AudioShit/sounds/DaNumberz/Minus_Spoken_SFX_01.wav" id="12_jggkw"]
+[ext_resource type="AudioStream" uid="uid://ciu5tw8w43dbw" path="res://AudioShit/sounds/DaNumberz/X_Spoken_SFX_01.wav" id="13_xoxs0"]
+[ext_resource type="AudioStream" uid="uid://dr2se86384uqd" path="res://AudioShit/sounds/DaNumberz/Y_Spoken_SFX_01.wav" id="14_h3nkw"]
+
+[node name="Radio" type="Node3D"]
+script = ExtResource("1_m5b23")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="0" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cdgo1")
+
+[node name="1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_eqk4p")
+bus = &"SFX"
+
+[node name="2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nol55")
+bus = &"SFX"
+
+[node name="3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kik8q")
+bus = &"SFX"
+
+[node name="4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cdgo1")
+bus = &"SFX"
+
+[node name="5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nol55")
+bus = &"SFX"
+
+[node name="6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_jggkw")
+bus = &"SFX"
+
+[node name="7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xoxs0")
+bus = &"SFX"
+
+[node name="8" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_h3nkw")
+bus = &"SFX"
+
+[node name="9" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_5n2tg")
+bus = &"SFX"
+
+[node name="-" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_jggkw")
+bus = &"SFX"
+
+[node name="X" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_xoxs0")
+bus = &"SFX"
+
+[node name="Y" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_h3nkw")
+bus = &"SFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
