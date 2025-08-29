@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ReverseFishing"
-run/main_scene="uid://d0pvlrlrg3qy7"
+run/main_scene="uid://v72uli6lwtc7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

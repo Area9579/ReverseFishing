@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://v72uli6lwtc7"]
+
+[ext_resource type="PackedScene" uid="uid://d0pvlrlrg3qy7" path="res://Ocean/Scenes/Environment.tscn" id="1_83ytx"]
+[ext_resource type="PackedScene" uid="uid://ddg3ko24uvh38" path="res://Boat/boat_controller.tscn" id="2_amygn"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Environment" parent="." instance=ExtResource("1_83ytx")]
+
+[node name="BoatController" parent="." instance=ExtResource("2_amygn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94939, 0)

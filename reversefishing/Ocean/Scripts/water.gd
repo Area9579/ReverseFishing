@@ -13,7 +13,7 @@ var time : float
 
 func _ready() -> void:
 	material = get_active_material(0)
-	noise = material.get_shader_parameter("wave").noise.get_seamless_image(512, 512)
+	#noise = material.get_shader_parameter("wave").noise.get_seamless_image(512, 512)
 	noise_scale = material.get_shader_parameter("noise_scale")
 	wave_speed = material.get_shader_parameter("wave_speed")
 	height_scale = material.get_shader_parameter("height_scale")
@@ -31,4 +31,5 @@ func get_height(world_position: Vector3) -> float:
 	var uv_y = wrapf(world_position.z / noise_scale + time * wave_speed, 0, 1)
 
 	var pixel_pos = Vector2(uv_x * noise.get_width(), uv_y * noise.get_height())
-	return global_position.y + noise.get_pixelv(pixel_pos).r * height_scale;
+	#return global_position.y + noise.get_pixelv(pixel_pos).r * height_scale;
+	return 0.0

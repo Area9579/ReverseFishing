@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0pvlrlrg3qy7"]
+[gd_scene load_steps=6 format=3 uid="uid://d0pvlrlrg3qy7"]
 
-[ext_resource type="PackedScene" uid="uid://dn61qtfjg1dl8" path="res://Ocean/Scenes/water.tscn" id="1_sbjri"]
-[ext_resource type="Script" uid="uid://1783t6iddxs2" path="res://Ocean/Scripts/test_cube.gd" id="2_rnjrr"]
-[ext_resource type="PackedScene" uid="uid://ciifxnij2rh46" path="res://Ocean/Scenes/buoyant_object.tscn" id="3_moaat"]
+[ext_resource type="PackedScene" uid="uid://dn61qtfjg1dl8" path="res://Ocean/Scenes/Water.tscn" id="1_sbjri"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eccmc"]
-sky_top_color = Color(0.593735, 0.653345, 0.643066, 1)
+sky_top_color = Color(0.614998, 0.673613, 0.663481, 1)
 sky_horizon_color = Color(0.113967, 0.168466, 0.188297, 1)
 sky_curve = 1.52947
 ground_bottom_color = Color(0.113725, 0.168627, 0.188235, 1)
@@ -23,21 +21,11 @@ ambient_light_color = Color(1, 1, 1, 1)
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1868
 volumetric_fog_albedo = Color(0.29269, 0.31741, 0.266917, 1)
-volumetric_fog_length = 32.0
+volumetric_fog_emission = Color(0.121703, 0.159672, 0.163507, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_npro8"]
-size = Vector3(0.2, 0.2, 0.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8q1e2"]
-size = Vector3(0.202423, 0.210144, 0.222793)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ikedk"]
 
 [node name="Environment" type="Node3D"]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.326, 0.25341, 5.60635)
-light_color = Color(0.808998, 0.808998, 0.808998, 1)
-light_energy = 10.212
-omni_range = 18.5229
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_eccmc")
@@ -46,23 +34,7 @@ environment = SubResource("Environment_eccmc")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19014, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.820352, 0.571859, 0, -0.571859, 0.820352, 0.0855231, 1.46451, 0.706956)
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
-light_color = Color(0.696969, 0.552437, 0.375594, 1)
-light_energy = 11.991
-
-[node name="TestCube" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.303525, 0)
-script = ExtResource("2_rnjrr")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TestCube"]
-mesh = SubResource("BoxMesh_npro8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestCube"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00050354, -0.00491315, 0.00298357)
-shape = SubResource("BoxShape3D_8q1e2")
-
-[node name="BuoyantObject" parent="." instance=ExtResource("3_moaat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.416138, 0.559731, -1.49267)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_ikedk")
