@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn61qtfjg1dl8"]
+[gd_scene load_steps=7 format=3 uid="uid://dn61qtfjg1dl8"]
 
 [ext_resource type="Shader" uid="uid://cmu13it8rh12m" path="res://Ocean/Shaders/Water.gdshader" id="1_enij7"]
 [ext_resource type="Script" uid="uid://3jfs38w8qv5n" path="res://Ocean/Scripts/water.gd" id="2_fv2ed"]
@@ -12,14 +12,6 @@ seamless = true
 as_normal_map = true
 noise = SubResource("FastNoiseLite_fv2ed")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1s5ju"]
-noise_type = 0
-fractal_type = 0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_et73n"]
-seamless = true
-noise = SubResource("FastNoiseLite_1s5ju")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bj4y0"]
 render_priority = 0
 shader = ExtResource("1_enij7")
@@ -31,7 +23,6 @@ shader_parameter/metallic = 0.323
 shader_parameter/roughness = 0.02
 shader_parameter/texture_normal = SubResource("NoiseTexture2D_5mmql")
 shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_5mmql")
-shader_parameter/wave = SubResource("NoiseTexture2D_et73n")
 shader_parameter/wave_time = 0.0
 shader_parameter/wave_direction = Vector2(2, 0)
 shader_parameter/wave_2_direction = Vector2(0, 1)
