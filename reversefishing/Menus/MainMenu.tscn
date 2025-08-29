@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfawubj5jwi3f"]
+
+[ext_resource type="Script" uid="uid://dl2qw2jyff8li" path="res://Menus/main_menu.gd" id="1_7ihqj"]
+[ext_resource type="Texture2D" uid="uid://n6w8h0ohryxk" path="res://Menus/yuh.png" id="1_r8dbq"]
+[ext_resource type="FontFile" uid="uid://c7306jxkq0bhn" path="res://Font/BadPixelFont2.ttf" id="2_7ihqj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ihqj"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_7ihqj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(408, 322)
+scale = Vector2(1.39507, 1.39507)
+texture = ExtResource("1_r8dbq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 61.0
+offset_top = 72.0
+offset_right = 1226.0
+offset_bottom = 232.0
+theme_override_fonts/normal_font = ExtResource("2_7ihqj")
+theme_override_fonts/mono_font = ExtResource("2_7ihqj")
+theme_override_fonts/italics_font = ExtResource("2_7ihqj")
+theme_override_fonts/bold_italics_font = ExtResource("2_7ihqj")
+theme_override_fonts/bold_font = ExtResource("2_7ihqj")
+theme_override_font_sizes/normal_font_size = 80
+text = "REVERSE
+FISHING"
+fit_content = true
+
+[node name="Play" type="Button" parent="."]
+offset_left = 51.0
+offset_top = 261.0
+offset_right = 172.0
+offset_bottom = 320.0
+theme_override_colors/font_hover_pressed_color = Color(0.594595, 0.589062, 0.574026, 1)
+theme_override_colors/font_hover_color = Color(0.594595, 0.589062, 0.574026, 1)
+theme_override_colors/font_focus_color = Color(0.594595, 0.589062, 0.574026, 1)
+theme_override_colors/font_pressed_color = Color(0.270276, 0.266544, 0.256417, 1)
+theme_override_fonts/font = ExtResource("2_7ihqj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ihqj")
+text = "PLAY"
+flat = true
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 51.0
+offset_top = 316.0
+offset_right = 190.0
+offset_bottom = 375.0
+theme_override_colors/font_hover_pressed_color = Color(0.594595, 0.589062, 0.574026, 1)
+theme_override_colors/font_hover_color = Color(0.594595, 0.589062, 0.574026, 1)
+theme_override_colors/font_focus_color = Color(0.594595, 0.589062, 0.574026, 1)
+theme_override_colors/font_pressed_color = Color(0.270276, 0.266544, 0.256417, 1)
+theme_override_fonts/font = ExtResource("2_7ihqj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7ihqj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ihqj")
+text = "EXIT"
+flat = true
+
+[connection signal="button_up" from="Play" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]
