@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://buxa0dwc4tmwh"]
+
+[ext_resource type="Script" uid="uid://cmwqqoiguorob" path="res://AudioShit/audio_shitter.gd" id="1_mobut"]
+[ext_resource type="AudioStream" uid="uid://cfxwsmiy151x0" path="res://AudioShit/sounds/Waves_Ambience_SFX_01.wav" id="2_e7nw6"]
+[ext_resource type="AudioStream" uid="uid://c7j68phm3xsj6" path="res://AudioShit/sounds/Wooden Creak_SFX_01.wav" id="3_e7nw6"]
+
+[node name="AudioShitter" type="Node" node_paths=PackedStringArray("ambiance", "rowboatCreaking")]
+script = ExtResource("1_mobut")
+ambiance = NodePath("Ambiance")
+rowboatCreaking = NodePath("Creaking")
+
+[node name="Ambiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_e7nw6")
+
+[node name="Creaking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_e7nw6")
+
+[node name="CreakingTimer" type="Timer" parent="Creaking"]
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="Creaking/CreakingTimer" to="." method="_on_creaking_timer_timeout"]

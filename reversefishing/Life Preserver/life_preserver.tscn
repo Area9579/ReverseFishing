@@ -1,10 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmtwiy2dy2xt3"]
 
 [ext_resource type="Script" uid="uid://cvx85lng6o4it" path="res://Life Preserver/life_preserver.gd" id="1_g7kev"]
-
-[sub_resource type="TorusMesh" id="TorusMesh_57mno"]
-rings = 12
-ring_segments = 8
+[ext_resource type="PackedScene" uid="uid://17qv814ck5nj" path="res://Life Preserver/Assets/Life saver.glb" id="2_w4m7y"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g7kev"]
 points = PackedVector3Array(0.437479, -0.243975, 0.583305, -0.060596, -0.0111184, -0.970296, -0.0603957, 0.0190553, -0.967088, -0.970296, -0.0111184, 0.060596, 0.571379, 0.273809, 0.57118, -0.57118, 0.273809, 0.571379, 0.571379, 0.273809, -0.57118, 0.533634, -0.248048, -0.533634, -0.57118, 0.273809, -0.571379, -0.556143, -0.244904, -0.49763, -0.029641, -0.188191, 0.887006, 0.970327, -0.0414446, 0.030204, -0.587633, -0.216426, 0.587633, 0.0301043, 0.0492814, 0.967124, 0.695002, -0.0412916, 0.695002, 0.695002, -0.0412916, -0.695002, -0.695002, -0.0412916, -0.695002, -0.695002, -0.0412916, 0.695002, -0.029641, -0.188191, -0.887006, 0.887056, -0.188202, 0.0294574, 0.874508, 0.193469, -0.0290407, -0.887056, -0.188202, -0.0294574, -0.793527, 0.273809, -0.0316217, 0.0316217, 0.273809, -0.793527, 0.0316217, 0.273809, 0.793527, -0.556142, -0.244904, 0.49763, 0.666018, 0.140217, 0.666018, -0.666018, 0.140217, -0.666018, 0.666018, 0.140217, -0.666018, -0.666018, 0.140217, 0.666018, 0.793527, 0.273809, 0.0316217, 0.593013, -0.188736, 0.652278)
@@ -16,9 +13,8 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_g7kev")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0, 0, 0)
-mesh = SubResource("TorusMesh_57mno")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_g7kev")
+
+[node name="Life saver" parent="." instance=ExtResource("2_w4m7y")]
+transform = Transform3D(0.705, 0, 0, 0, 0.705, 0, 0, 0, 0.705, 0, 0, 0)

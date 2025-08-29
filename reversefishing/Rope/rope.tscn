@@ -2,15 +2,11 @@
 
 [ext_resource type="Script" uid="uid://uce4lxik0of5" path="res://Rope/rope.gd" id="1_wlbtu"]
 [ext_resource type="PackedScene" uid="uid://bmtwiy2dy2xt3" path="res://Life Preserver/life_preserver.tscn" id="2_hxlmy"]
+[ext_resource type="PackedScene" uid="uid://cwviygtovcelw" path="res://Rope/Assets/RopePiece.glb" id="2_wrvb3"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_w4m7y"]
 height = 0.5
 radius = 0.05
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_h5735"]
-top_radius = 0.05
-bottom_radius = 0.05
-height = 0.5
 
 [node name="Rope" type="Node3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 1)
@@ -19,53 +15,53 @@ script = ExtResource("1_wlbtu")
 [node name="RopeBody1" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 collision_layer = 4
+axis_lock_angular_z = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RopeBody1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_w4m7y")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RopeBody1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_h5735")
+[node name="RopePiece" parent="RopeBody1" instance=ExtResource("2_wrvb3")]
+transform = Transform3D(0.55, -1.0141e-07, -2.10175e-15, 0, -5.07052e-08, 0.55, -4.80825e-08, -1.16, -2.40413e-08, 0, 0, 0)
 
 [node name="RopeBody2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
 collision_layer = 4
+axis_lock_angular_z = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RopeBody2"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_w4m7y")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RopeBody2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_h5735")
+[node name="RopePiece" parent="RopeBody2" instance=ExtResource("2_wrvb3")]
+transform = Transform3D(0.55, -1.0141e-07, -2.10175e-15, 0, -5.07052e-08, 0.55, -4.80825e-08, -1.16, -2.40413e-08, 0, 0, 0)
 
 [node name="RopeBody3" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 collision_layer = 4
+axis_lock_angular_z = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RopeBody3"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_w4m7y")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RopeBody3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_h5735")
+[node name="RopePiece" parent="RopeBody3" instance=ExtResource("2_wrvb3")]
+transform = Transform3D(0.55, -1.0141e-07, -2.10175e-15, 0, -5.07052e-08, 0.55, -4.80825e-08, -1.16, -2.40413e-08, 0, 0, 0)
 
 [node name="RopeBody4" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, 0.75)
 collision_layer = 4
+axis_lock_angular_z = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RopeBody4"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_w4m7y")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RopeBody4"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_h5735")
+[node name="RopePiece" parent="RopeBody4" instance=ExtResource("2_wrvb3")]
+transform = Transform3D(0.55, -1.0141e-07, -2.10175e-15, 0, -5.07052e-08, 0.55, -4.80825e-08, -1.16, -2.40413e-08, 0, 0, 0)
 
 [node name="Life Preserver" parent="." instance=ExtResource("2_hxlmy")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.74846e-07, 0, -2)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.66066e-07, 0, -1.89957)
 axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false

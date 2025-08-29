@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://djgnljgswcq2n"]
+
+[ext_resource type="Material" uid="uid://cis1javl80w8f" path="res://DitherShader/Dithering.tres" id="1_smtts"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_smtts"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+visible = false
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("1_smtts")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_smtts")

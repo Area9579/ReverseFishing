@@ -7,7 +7,7 @@ func _ready() -> void:
 	SignalBus.connect("spawnMonster", spawnMonster)
 
 
-func spawnMonster(preserver : LifePreserver):
+func spawnMonster(preserver):
 	var newMonster = monster.instantiate()
 	preserver.add_child(newMonster)
 	newMonster.reparent(self)

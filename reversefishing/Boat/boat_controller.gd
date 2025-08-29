@@ -97,8 +97,13 @@ func getEatedIdiot():
 	if !preserverArray.is_empty():
 		preserverArray.get(preserverArray.size() - 1).queue_free()
 		preserverArray.pop_back()
+	else:
+		await get_tree().create_timer(0.3).timeout
+		get_tree().reload_current_scene()
 
 
 func uhhEatCall():
 	if !preserverArray.is_empty():
-			SignalBus.emit_signal("spawnMonster", preserverArray.get(preserverArray.size() - 1).getLifePreserver())
+		SignalBus.emit_signal("spawnMonster", preserverArray.get(preserverArray.size() - 1).getLifePreserver())
+	else:
+		SignalBus.emit_signal("spawnMonster", self)

@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7yw0tkbdo4n0"]
+[gd_scene load_steps=7 format=3 uid="uid://c7yw0tkbdo4n0"]
 
 [ext_resource type="PackedScene" uid="uid://dp8jquobjus4l" path="res://Monster/Assets/seamonster.glb" id="1_d8j0f"]
 [ext_resource type="Script" uid="uid://cfjtp3umpx7ca" path="res://Monster/seamonster.gd" id="2_7odly"]
+[ext_resource type="AudioStream" uid="uid://bg0bkq218mxmd" path="res://AudioShit/sounds/Sea Monster Attack_SFX_01.wav" id="3_bijxq"]
 
 [sub_resource type="Animation" id="Animation_7odly"]
 resource_name = "EatAPerson"
+length = 2.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -13,7 +15,7 @@ tracks/0/path = NodePath("Plane_006:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
+"times": PackedFloat32Array(1, 1.3, 2),
 "transitions": PackedFloat32Array(0.258817, 1.93187, 1.6818),
 "update": 0,
 "values": [Vector3(0, -30, 0), Vector3(0, -18, 0), Vector3(0, -30, 0)]
@@ -25,7 +27,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 1),
+"times": PackedFloat32Array(1.3, 2),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -42,10 +44,22 @@ tracks/2/path = NodePath("Plane_006:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
+"times": PackedFloat32Array(1, 1.3, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(-4.37114e-08, 1.5708, 1.5708), Vector3(0, 0.785398, 1.5708), Vector3(0, 0, 1.5708)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Plane_006:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_bijxq"]
@@ -74,6 +88,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-4.37114e-08, 1.5708, 1.5708)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Plane_006:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ffj8"]
 _data = {
@@ -91,3 +117,8 @@ transform = Transform3D(-1.52944e-07, 1.267e-05, 3.5, 3.5, -1.267e-05, 1.5299e-0
 libraries = {
 &"": SubResource("AnimationLibrary_2ffj8")
 }
+
+[node name="Splash" type="AudioStreamPlayer3D" parent="." index="2"]
+transform = Transform3D(1, 7.10543e-15, -5.33802e-27, -7.10543e-15, 1, -7.5126e-13, 0, 7.5126e-13, 1, -5.68434e-14, 0, 1.13872e-11)
+stream = ExtResource("3_bijxq")
+bus = &"SFX"

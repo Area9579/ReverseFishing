@@ -1,25 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc8yqxsdshdgo"]
+[gd_scene load_steps=4 format=3 uid="uid://cc8yqxsdshdgo"]
 
 [ext_resource type="Script" uid="uid://bmgy5lmcwh5u6" path="res://Map/map.gd" id="1_ro55w"]
 [ext_resource type="FontFile" uid="uid://c7306jxkq0bhn" path="res://Font/BadPixelFont2.ttf" id="2_njngi"]
+[ext_resource type="Texture2D" uid="uid://ce17yfv7trcyd" path="res://Map/map.png" id="3_6yc6o"]
 
 [node name="Map" type="CanvasLayer"]
 script = ExtResource("1_ro55w")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = 1
-offset_left = 256.0
-offset_right = 896.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
-
 [node name="PlayerCoords" type="Label" parent="."]
 z_index = 1
 texture_filter = 1
-offset_left = 256.0
-offset_right = 896.0
-offset_bottom = 128.0
+offset_right = 640.0
+offset_bottom = 99.0
 theme_override_fonts/font = ExtResource("2_njngi")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "pos x = 
 pos y = "
+vertical_alignment = 2
+
+[node name="Map" type="Sprite2D" parent="."]
+position = Vector2(760, 324)
+scale = Vector2(0.324219, 0.324219)
+texture = ExtResource("3_6yc6o")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 472.0
+offset_top = 8.0
+offset_right = 1040.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("2_njngi")
+text = "10    20     30    40     50    60    70      80    90    100   110   120    130"
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 1
+offset_left = 448.0
+offset_top = 24.0
+offset_right = 476.0
+offset_bottom = 359.0
+theme_override_constants/line_spacing = 32
+theme_override_fonts/font = ExtResource("2_njngi")
+text = "10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+110
+120
+130"

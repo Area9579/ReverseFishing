@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0pvlrlrg3qy7"]
+
+[ext_resource type="PackedScene" uid="uid://dn61qtfjg1dl8" path="res://Ocean/Scenes/Water.tscn" id="1_nv34k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eccmc"]
+sky_top_color = Color(0.593735, 0.653345, 0.643066, 1)
+sky_horizon_color = Color(0.113967, 0.168466, 0.188297, 1)
+sky_curve = 1.52947
+ground_bottom_color = Color(0.113725, 0.168627, 0.188235, 1)
+ground_horizon_color = Color(0.113725, 0.168627, 0.188235, 1)
+sun_curve = 0.0549031
+
+[sub_resource type="Sky" id="Sky_up6sl"]
+sky_material = SubResource("ProceduralSkyMaterial_eccmc")
+
+[sub_resource type="Environment" id="Environment_eccmc"]
+background_mode = 2
+sky = SubResource("Sky_up6sl")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1868
+volumetric_fog_albedo = Color(0.29269, 0.31741, 0.266917, 1)
+volumetric_fog_emission = Color(0.0652515, 0.07519, 0.0760666, 1)
+volumetric_fog_length = 32.0
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ecc80"]
+
+[node name="Environment" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_eccmc")
+
+[node name="Water" parent="." instance=ExtResource("1_nv34k")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19014, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_ecc80")
