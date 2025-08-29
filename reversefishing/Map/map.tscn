@@ -22,3 +22,34 @@ vertical_alignment = 2
 position = Vector2(760, 324)
 scale = Vector2(0.324219, 0.324219)
 texture = ExtResource("3_6yc6o")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 472.0
+offset_top = 8.0
+offset_right = 1040.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("2_njngi")
+text = "10    20     30    40     50    60    70      80    90    100   110   120    130"
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 1
+offset_left = 448.0
+offset_top = 24.0
+offset_right = 476.0
+offset_bottom = 359.0
+theme_override_constants/line_spacing = 32
+theme_override_fonts/font = ExtResource("2_njngi")
+text = "10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+110
+120
+130"

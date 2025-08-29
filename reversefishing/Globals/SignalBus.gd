@@ -8,7 +8,7 @@ extends Node
 
 ## Monster rawr :3 ##
 @warning_ignore("unused_signal") signal eatThatGuy
-@warning_ignore("unused_signal") signal spawnMonster(preserver : LifePreserver)
+@warning_ignore("unused_signal") signal spawnMonster(preserver)
 @warning_ignore("unused_signal") signal callEatToHappen
 
 ## Radio ##
