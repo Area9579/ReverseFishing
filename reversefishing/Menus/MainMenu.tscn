@@ -1,17 +1,119 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfawubj5jwi3f"]
+[gd_scene load_steps=12 format=3 uid="uid://dfawubj5jwi3f"]
 
 [ext_resource type="Script" uid="uid://dl2qw2jyff8li" path="res://Menus/main_menu.gd" id="1_7ihqj"]
 [ext_resource type="Texture2D" uid="uid://n6w8h0ohryxk" path="res://Menus/yuh.png" id="1_r8dbq"]
 [ext_resource type="FontFile" uid="uid://c7306jxkq0bhn" path="res://Font/BadPixelFont2.ttf" id="2_7ihqj"]
+
+[sub_resource type="Animation" id="Animation_7ihqj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n6o36"]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5ncg0"]
+resource_name = "fadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0xbyl"]
+_data = {
+&"RESET": SubResource("Animation_7ihqj"),
+&"fadeIn": SubResource("Animation_n6o36"),
+&"fadeOut": SubResource("Animation_5ncg0")
+}
+
+[sub_resource type="Animation" id="Animation_1txdl"]
+resource_name = "sway"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(0.574349, 0.594604, 0.34151),
+"update": 0,
+"values": [Vector2(408, 322), Vector2(401.02, 325.635), Vector2(408, 322)]
+}
+
+[sub_resource type="Animation" id="Animation_m16r1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(408, 322)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ju15h"]
+_data = {
+&"RESET": SubResource("Animation_m16r1"),
+&"sway": SubResource("Animation_1txdl")
+}
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ihqj"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_7ihqj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="FadePlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0xbyl")
+}
+
+[node name="SwayPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ju15h")
+}
+
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(408, 322)
-scale = Vector2(1.39507, 1.39507)
+scale = Vector2(1.60974, 1.60974)
 texture = ExtResource("1_r8dbq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -30,10 +132,10 @@ FISHING"
 fit_content = true
 
 [node name="Play" type="Button" parent="."]
-offset_left = 51.0
-offset_top = 261.0
-offset_right = 172.0
-offset_bottom = 320.0
+offset_left = 60.0
+offset_top = 259.0
+offset_right = 191.0
+offset_bottom = 318.0
 theme_override_colors/font_hover_pressed_color = Color(0.594595, 0.589062, 0.574026, 1)
 theme_override_colors/font_hover_color = Color(0.594595, 0.589062, 0.574026, 1)
 theme_override_colors/font_focus_color = Color(0.594595, 0.589062, 0.574026, 1)
@@ -55,10 +157,10 @@ text = "PLAY"
 flat = true
 
 [node name="Exit" type="Button" parent="."]
-offset_left = 51.0
-offset_top = 316.0
-offset_right = 190.0
-offset_bottom = 375.0
+offset_left = 55.0
+offset_top = 321.0
+offset_right = 194.0
+offset_bottom = 380.0
 theme_override_colors/font_hover_pressed_color = Color(0.594595, 0.589062, 0.574026, 1)
 theme_override_colors/font_hover_color = Color(0.594595, 0.589062, 0.574026, 1)
 theme_override_colors/font_focus_color = Color(0.594595, 0.589062, 0.574026, 1)
@@ -78,6 +180,12 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7ihqj")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7ihqj")
 text = "EXIT"
 flat = true
+
+[node name="Fade" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(537, 321)
+scale = Vector2(1.43088, 1.73769)
+texture = ExtResource("1_r8dbq")
 
 [connection signal="button_up" from="Play" to="." method="_on_play_button_up"]
 [connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]
