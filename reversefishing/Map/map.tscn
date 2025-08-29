@@ -30,7 +30,7 @@ offset_top = 8.0
 offset_right = 1040.0
 offset_bottom = 31.0
 theme_override_fonts/font = ExtResource("2_njngi")
-text = "10    20     30    40     50    60    70      80    90    100   110   120    130"
+text = "0      10    20     30    40     50    60    70      80    90    100   110   120"
 
 [node name="Label2" type="Label" parent="."]
 texture_filter = 1
@@ -40,7 +40,8 @@ offset_right = 476.0
 offset_bottom = 359.0
 theme_override_constants/line_spacing = 32
 theme_override_fonts/font = ExtResource("2_njngi")
-text = "10
+text = "0
+10
 20
 30
 40
@@ -51,5 +52,4 @@ text = "10
 90
 100
 110
-120
-130"
+120"

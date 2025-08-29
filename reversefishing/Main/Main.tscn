@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://v72uli6lwtc7"]
+[gd_scene load_steps=4 format=3 uid="uid://v72uli6lwtc7"]
 
 [ext_resource type="PackedScene" uid="uid://d0pvlrlrg3qy7" path="res://Ocean/Scenes/Environment.tscn" id="1_83ytx"]
 [ext_resource type="PackedScene" uid="uid://ddg3ko24uvh38" path="res://Boat/boat_controller.tscn" id="2_amygn"]
+[ext_resource type="PackedScene" uid="uid://cd771rb0jevf1" path="res://FishingVessel/fishing_vessel.tscn" id="3_amygn"]
 
 [node name="Main" type="Node3D"]
 
 [node name="Environment" parent="." instance=ExtResource("1_83ytx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 65)
 
 [node name="BoatController" parent="." instance=ExtResource("2_amygn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94939, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0.949, 65)
+
+[node name="FishingVessel" parent="." instance=ExtResource("3_amygn")]
+top_level = false
+startPosition = Vector3(25, 0, 25)
+
+[node name="FishingVessel2" parent="." instance=ExtResource("3_amygn")]
+top_level = false
+startPosition = Vector3(105, 0, 35)
