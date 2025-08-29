@@ -3,7 +3,6 @@ extends Node2D
 @onready var sway_player: AnimationPlayer = $SwayPlayer
 @onready var fade: Sprite2D = $Fade
 
-
 func _ready() -> void:
 	fade.visible = true
 	fade_player.play("fadeIn")
