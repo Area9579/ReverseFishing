@@ -1,0 +1,223 @@
+[gd_scene load_steps=16 format=3 uid="uid://cig15rqnfx6uw"]
+
+[ext_resource type="Script" uid="uid://cfxsstl8y8ssh" path="res://Menus/credits.gd" id="1_lw8m3"]
+[ext_resource type="Texture2D" uid="uid://n6w8h0ohryxk" path="res://Menus/yuh.png" id="2_m6n7f"]
+[ext_resource type="FontFile" uid="uid://c7306jxkq0bhn" path="res://Font/BadPixelFont2.ttf" id="3_d7jex"]
+
+[sub_resource type="Animation" id="Animation_fldtd"]
+resource_name = "new_animation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h33bd"]
+resource_name = "FadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_40tvf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jemrb"]
+_data = {
+&"FadeIn": SubResource("Animation_fldtd"),
+&"FadeOut": SubResource("Animation_h33bd"),
+&"RESET": SubResource("Animation_40tvf")
+}
+
+[sub_resource type="Animation" id="Animation_4r10w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(408, 322)]
+}
+
+[sub_resource type="Animation" id="Animation_b520f"]
+resource_name = "sway"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.46667, 2.96667),
+"transitions": PackedFloat32Array(0.535887, 0.574349, 1),
+"update": 0,
+"values": [Vector2(408, 322), Vector2(403.01, 332.905), Vector2(408, 322)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_83f77"]
+_data = {
+&"RESET": SubResource("Animation_4r10w"),
+&"sway": SubResource("Animation_b520f")
+}
+
+[sub_resource type="Animation" id="Animation_682sm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 501)]
+}
+
+[sub_resource type="Animation" id="Animation_eyvbl"]
+resource_name = "scroll"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-3, 501), Vector2(-3, -293.98)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sfrk8"]
+_data = {
+&"RESET": SubResource("Animation_682sm"),
+&"scroll": SubResource("Animation_eyvbl")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rheul"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aq472"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_lw8m3")
+
+[node name="FadePlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jemrb")
+}
+
+[node name="SwayPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_83f77")
+}
+
+[node name="ScrollPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sfrk8")
+}
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(408, 322)
+scale = Vector2(1.60974, 1.60974)
+texture = ExtResource("2_m6n7f")
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 982.0
+offset_top = 564.0
+offset_right = 1121.0
+offset_bottom = 623.0
+theme_override_colors/font_hover_pressed_color = Color(0.594595, 0.589062, 0.574026, 1)
+theme_override_colors/font_hover_color = Color(0.594595, 0.589062, 0.574026, 1)
+theme_override_colors/font_focus_color = Color(0.594595, 0.589062, 0.574026, 1)
+theme_override_colors/font_pressed_color = Color(0.270276, 0.266544, 0.256417, 1)
+theme_override_fonts/font = ExtResource("3_d7jex")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rheul")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_rheul")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rheul")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_rheul")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rheul")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_rheul")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rheul")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_rheul")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rheul")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_rheul")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rheul")
+text = "EXIT"
+flat = true
+
+[node name="Panel" type="Panel" parent="."]
+clip_contents = true
+offset_left = 69.0
+offset_top = 58.0
+offset_right = 1114.0
+offset_bottom = 538.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aq472")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 501.0
+offset_right = 1162.0
+offset_bottom = 807.0
+theme_override_fonts/normal_font = ExtResource("3_d7jex")
+theme_override_fonts/mono_font = ExtResource("3_d7jex")
+theme_override_fonts/italics_font = ExtResource("3_d7jex")
+theme_override_fonts/bold_italics_font = ExtResource("3_d7jex")
+theme_override_fonts/bold_font = ExtResource("3_d7jex")
+theme_override_font_sizes/normal_font_size = 50
+text = "CORDUS: CONCEPT ARTIST, 
+ILLUSTRATOR
+SEDETH: 3D MODELER
+
+DINOSAUR065: PROGRAMMER,
+PHOENIX: PROGRAMMER"
+fit_content = true
+
+[node name="Fade" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(537, 321)
+scale = Vector2(1.43088, 1.73769)
+texture = ExtResource("2_m6n7f")
+
+[connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]
