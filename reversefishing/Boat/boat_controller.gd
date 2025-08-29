@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var camera_3d: Camera3D = $Head/Camera3D
 @onready var preserver_marker: Marker3D = $PreserverMarker
 @onready var rope_attach_point: StaticBody3D = $RopeAttachPoint
+@onready var fade: AnimationPlayer = $Fade
 
 var preserver : PackedScene = preload("res://Rope/rope.tscn")
 var preserverArray : Array[Node3D] = []
@@ -28,6 +29,8 @@ var timeElpased : float = 0.0
 
 
 func _ready() -> void:
+	fade.play("fadeIn")
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	SignalBus.connect("addPreserver", createPreserver)
@@ -56,6 +59,9 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Escape"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		fade.play("fadeOut")
+		await fade.animation_finished
+		get_tree().change_scene_to_file("res://Menus/MainMenu.tscn")
 		
 	
 	if !is_on_floor():
@@ -98,8 +104,9 @@ func getEatedIdiot():
 		preserverArray.get(preserverArray.size() - 1).queue_free()
 		preserverArray.pop_back()
 	else:
-		await get_tree().create_timer(0.3).timeout
-		get_tree().reload_current_scene()
+		fade.play("fadeOut")
+		await fade.animation_finished
+		get_tree().change_scene_to_file("res://Menus/Credits.tscn")
 
 
 func uhhEatCall():

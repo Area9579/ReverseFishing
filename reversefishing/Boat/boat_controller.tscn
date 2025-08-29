@@ -1,11 +1,66 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddg3ko24uvh38"]
+[gd_scene load_steps=27 format=3 uid="uid://ddg3ko24uvh38"]
 
 [ext_resource type="Script" uid="uid://qekehxqlhdb2" path="res://Boat/boat_controller.gd" id="1_o4dir"]
 [ext_resource type="PackedScene" uid="uid://1753towy07lm" path="res://Boat/Assets/Rowboat.glb" id="2_hchyh"]
 [ext_resource type="Shader" uid="uid://dn3me3rpk66so" path="res://Ocean/Shaders/boat_shader.gdshader" id="2_o8fyl"]
+[ext_resource type="Texture2D" uid="uid://n6w8h0ohryxk" path="res://Menus/yuh.png" id="3_qp2tb"]
 [ext_resource type="PackedScene" uid="uid://crmblfalu6e7k" path="res://Boat/Assets/Paddle.glb" id="3_yfaip"]
 [ext_resource type="PackedScene" uid="uid://cc8yqxsdshdgo" path="res://Map/map.tscn" id="4_yfaip"]
 [ext_resource type="PackedScene" uid="uid://dprj1wma0n6uu" path="res://Radio/radio.tscn" id="5_o8fyl"]
+
+[sub_resource type="Animation" id="Animation_5th70"]
+resource_name = "fadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_urc5h"]
+resource_name = "fadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e3svt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2u8t5"]
+_data = {
+&"RESET": SubResource("Animation_e3svt"),
+&"fadeIn": SubResource("Animation_5th70"),
+&"fadeOut": SubResource("Animation_urc5h")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbuyh"]
 size = Vector3(0.834106, 0.238, 2.13032)
@@ -141,6 +196,11 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_o4dir")
 
+[node name="Fade" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2u8t5")
+}
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0228882, -0.0121547, -0.070044)
 shape = SubResource("BoxShape3D_hbuyh")
@@ -185,6 +245,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.752143, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
 current = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Head"]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 0, -0.0511452, 0.108089)
+modulate = Color(0, 0, 0, 1)
+render_priority = 5
+texture = ExtResource("3_qp2tb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head"]
 visible = false
