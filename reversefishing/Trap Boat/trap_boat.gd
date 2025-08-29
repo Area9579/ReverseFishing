@@ -4,6 +4,7 @@ extends RigidBody3D
 @onready var creak_2: AudioStreamPlayer3D = $Creak2
 @onready var audio_timer: Timer = $AudioTimer
 
+
 @onready var vectorPos : Vector2 = Vector2(global_position.x, global_position.z)
 
 @export_range(0.0, 60.0, 1.0) var sinkTime : int
@@ -29,10 +30,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		return
 	
 	boatInRange = true
-	sinkingTween = get_tree().create_tween()
-	sinkingTween.tween_property(self, "position", Vector3(position.x, -5, position.z), sinkTime)
-	
-	await sinkingTween.finished
+	#animation_player.play("sink")
+	#
+	#await animation_player.animation_finished
 	queue_free()
 
 

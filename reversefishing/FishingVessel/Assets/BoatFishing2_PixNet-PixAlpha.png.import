@@ -2,11 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i6ukh1xu7622"
+uid="uid://cmnd16uolntn"
 path.s3tc="res://.godot/imported/BoatFishing2_PixNet-PixAlpha.png-bad1109d72594fad85674cde620e069d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
+}
+generator_parameters={
+"md5": "17a917673790ff28737abea182a172d4"
 }
 
 [deps]

@@ -24,7 +24,7 @@ volumetric_fog_albedo = Color(0.29269, 0.31741, 0.266917, 1)
 volumetric_fog_emission = Color(0.0652515, 0.07519, 0.0760666, 1)
 volumetric_fog_length = 32.0
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ecc80"]
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ikedk"]
 
 [node name="Environment" type="Node3D"]
 
@@ -38,4 +38,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19014, 0)
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("WorldBoundaryShape3D_ecc80")
+shape = SubResource("WorldBoundaryShape3D_ikedk")

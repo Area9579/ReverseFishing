@@ -10,12 +10,13 @@ extends RigidBody3D
 @onready var vectorPos : Vector2 = Vector2(global_position.x, global_position.z)
 
 @export_range(0.0, 60.0, 1.0) var sinkTime : int
-
+@export var startPosition : Vector3
 var boatInRange: bool = false
 var hasInteracted : bool = false
 
 
 func _ready() -> void:
+	position = startPosition
 	SignalBus.connect("interact", interact)
 	
 	#TEMP
@@ -25,6 +26,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if boatInRange and audio_timer.is_stopped():
 		audio_timer.start()
+	
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
